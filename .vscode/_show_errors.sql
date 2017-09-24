@@ -1,4 +1,5 @@
 
+--Source: https://gist.github.com/mortenbra/3204a125e3da1008e19b36bf94586950
 set pagesize 9999
 set linesize 9999
 set heading off
