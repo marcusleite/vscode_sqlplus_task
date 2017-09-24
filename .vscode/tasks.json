@@ -9,15 +9,23 @@
             "type": "shell",
             "command": "./.vscode/build.sh",
             "args": [
+                // The quotes are necessary because VSCode currently doesn't
+                // escape special characters in this arguments.
                 "\"${file}\"",
                 "\"${fileBasenameNoExtension}\"",
+                /*
+                    About the next line:                    
+                    * system is the username
+                    * oracle is the password
+                    * Change localhost:32769 to yourdb.host:1521 or equivalent.
+                */                
                 "\"system/oracle@localhost:32769\/xe\""
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            // use this to get any database errors (from user_errors view) listed in the "Problems" pane in VS Code
+            // Credits to: https://gist.github.com/mortenbra/9d7bd2147b02ae8fa2e14dbc38935e5e
             "problemMatcher": {
                 "owner": "plsql",
                 "fileLocation": [
