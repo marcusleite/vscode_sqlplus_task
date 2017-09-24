@@ -1,0 +1,9 @@
+CREATE OR REPLACE PROCEDURE TEST_1
+IS
+    v_number PLS_INTEGER;
+BEGIN
+    SELECT 1
+    INTO v_number
+    FROM DUAL;
+END;
+/

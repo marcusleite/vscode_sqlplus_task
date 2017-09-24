@@ -1,0 +1,65 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    /*
+    ${workspaceRoot} the path of the folder opened in VS Code
+    ${workspaceRootFolderName} the name of the folder opened in VS Code without any slashes (/)
+    ${file} the current opened file
+    ${relativeFile} the current opened file relative to workspaceRoot
+    ${fileBasename} the current opened file's basename
+    ${fileBasenameNoExtension} the current opened file's basename without the extension
+    ${fileDirname} the current opened file's dirname
+    ${fileExtname} the current opened file's extension
+    ${cwd} the task runner's current working directory on startup
+    ${lineNumber} the current selected line number in the active file
+    */
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "echo",
+            "type": "shell",
+            "command": "./.vscode/build.sh",
+            "args": [
+                "\"${file}\"", //phase 2
+                "\"${fileBasenameNoExtension}\"", //phase 2,
+                "\"system/oracle@localhost:32769\/xe\""
+                /*
+                "1_line.txt",
+                "2_lines.txt",
+                "3_a_filename_inside.txt",
+                "\"${fileDirname}\""
+                phase 1*/
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            // use this to get any database errors (from user_errors view) listed in the "Problems" pane in VS Code
+            "problemMatcher": {
+                "owner": "plsql",
+                "fileLocation": [
+                    "relative",
+                    "${fileDirname}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "(.*) (\\d*)\/(\\d*) (.*?) (.*)",
+                        "severity": 1,
+                        "line": 2,
+                        "column": 3,
+                        "file": 4,
+                        "message": 5,
+                        "loop": true
+                    }
+                ]
+                
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": true,
+                "panel": "shared"
+            }
+        }
+    ]
+}
